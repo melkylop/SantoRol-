@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Santo Rolê - Eventos de Entretenimento Cristão</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --black: #000000;
+        --white: #ff2d95;
+        --pink: #ffffff;
+        --dark-gray: #1a1a1a;
+        --light-gray: #f5f5f5;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        color: var(--white);
+        line-height: 1.6;
+        background-color: var(--black);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      header {
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 15px 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(5px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--white);
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 25px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: var(--white);
+        font-weight: 500;
+        transition: color 0.3s;
+        font-size: 0.9rem;
+      }
+
+      .nav-links a:hover {
+        color: var(--pink);
+      }
+
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background-color: var(--white);
+        margin: 2px 0;
+        transition: all 0.3s;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: var(--pink);
+        color: var(--white);
+        padding: 12px 28px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+      }
+
+      .btn:hover {
+        background-color: var(--white);
+        color: var(--black);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 45, 149, 0.4);
+      }
+
+      /* Botão WhatsApp elegante */
+      .btn-whatsapp {
+        background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+        color: white;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .btn-whatsapp::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #128c7e 0%, #25d366 100%);
+        transition: all 0.6s;
+        z-index: -1;
+      }
+
+      .btn-whatsapp:hover::before {
+        left: 0;
+      }
+
+      .btn-whatsapp:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .hero {
+        padding-top: 120px;
+        padding-bottom: 80px;
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("./pexels-cottonbro-4836371.jpg");
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: var(--pink);
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto 30px;
+      }
+
+      .about {
+        background-color: var(--dark-gray);
+        text-align: center;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .section-title h2 {
+        font-size: 2.2rem;
+        margin-bottom: 15px;
+        color: var(--pink);
+      }
+
+      .section-title p {
+        color: var(--white);
+        max-width: 700px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+      }
+
+      .events-columns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 40px;
+        margin-top: 50px;
+      }
+
+      .event-column {
+        background-color: var(--black);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        cursor: pointer;
+      }
+
+      .event-column:hover {
+        transform: translateY(-10px);
+        border-color: var(--pink);
+      }
+
+      .event-image {
+        height: 400px;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+
+      .event-image::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 50%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      }
+
+      .event-content {
+        padding: 25px;
+        text-align: center;
+      }
+
+      .event-content h3 {
+        color: var(--white);
+        margin-bottom: 15px;
+        font-size: 1.8rem;
+      }
+
+      .event-content p {
+        margin-bottom: 20px;
+        color: #ccc;
+      }
+
+      .event-features {
+        list-style: none;
+        margin: 20px 0;
+      }
+
+      .event-features li {
+        margin-bottom: 10px;
+        padding-left: 25px;
+        position: relative;
+        color: #ccc;
+      }
+
+      .event-features li::before {
+        content: "✓";
+        color: var(--pink);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .cine-column .event-image {
+        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+          url("./xx.png");
+      }
+
+      .gamer-column .event-image {
+        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+          url("./xx1.png");
+      }
+
+      .pricing {
+        display: flex;
+        flex-direction: row; /* linha — cards lado a lado */
+        align-items: stretch; /* faz todos os cards terem a mesma altura */
+        justify-content: center; /* centra a fileira de cards horizontalmente */
+        gap: 24px; /* espaço uniforme entre os cards */
+        padding: 60px 20px; /* espaço do topo e da base */
+        background-color: var(--black);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        box-sizing: border-box;
+        width: 100%;
+      }
+
+      .price-card,
+      .price-card1,
+      .price-card2 {
+        box-sizing: border-box; /* garante que padding não "estoure" a largura */
+        flex: 1 1 320px; /* largura base responsiva; todos crescem igualmente */
+        max-width: 360px; /* limite máximo por card */
+        min-width: 260px; /* limite mínimo (evita ficar muito pequeno) */
+        display: flex;
+        flex-direction: column; /* conteúdo do card empilhado verticalmente */
+        justify-content: space-between; /* empurra elementos (ex: botão) para baixo, mantendo boas distâncias */
+        align-items: center; /* centraliza conteúdo dentro do card */
+        text-align: center; /* centraliza textos */
+        padding: 28px 24px; /* padding uniforme */
+        margin: 0; /* spacing controlado por gap no container */
+        border-radius: 10px;
+        background-color: var(--dark-gray);
+        border: 1px solid var(--pink);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Tipografia e espaçamento interno (ajuste conforme seus elementos HTML) */
+      .price-card h3 {
+        margin: 0 0 10px;
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .price {
+        font-size: 2rem; /* use 2rem para ficar grande mas proporcional */
+        font-weight: 800;
+        color: var(--pink);
+        margin: 12px 0;
+      }
+
+      /* lista de features dentro do card */
+      .price-features {
+        list-style: none;
+        padding: 0;
+        margin: 14px 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        color: #e6e6e6;
+        align-items: center;
+      }
+
+      /* botão CTA dentro do card */
+      .price-card .btn {
+        margin-top: 16px;
+        padding: 10px 18px;
+        border-radius: 8px;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      /* RESPONSIVO: empilha os cards em telas pequenas */
+      @media (max-width: 900px) {
+        .pricing {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .price-card,
+        .price-card1,
+        .price-card2 {
+          flex: 1 1 100%;
+          max-width: 100%;
+        }
+      }
+
+      .register {
+        background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+          url("https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixuto=format&fit=crop&w=1500&q=80");
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        position: relative;
+      }
+
+      .register::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 45, 149, 0.1) 0%,
+          rgba(0, 0, 0, 0.8) 100%
+        );
+      }
+
+      .register .container {
+        position: relative;
+        z-index: 2;
+      }
+
+      .whatsapp-box {
+        background-color: var(--black);
+        border-radius: 10px;
+        padding: 40px;
+        max-width: 600px;
+        margin: 0 auto;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        border: 1px solid var(--pink);
+      }
+
+      .whatsapp-icon {
+        font-size: 3rem;
+        color: #25d366;
+        margin-bottom: 20px;
+      }
+
+      .whatsapp-box h3 {
+        margin-bottom: 20px;
+        color: var(--white);
+      }
+
+      .whatsapp-box p {
+        margin-bottom: 30px;
+        color: #ccc;
+      }
+
+      footer {
+        background-color: var(--black);
+        padding: 50px 0 20px;
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        text-align: left;
+        margin-bottom: 30px;
+      }
+
+      .footer-logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--pink);
+        margin-bottom: 15px;
+      }
+
+      .footer-links h4 {
+        color: var(--pink);
+        margin-bottom: 20px;
+        font-size: 1.2rem;
+      }
+
+      .footer-links ul {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: var(--white);
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 0.9rem;
+      }
+
+      .footer-links a:hover {
+        color: var(--pink);
+      }
+
+      .copyright {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ccc;
+        font-size: 0.9rem;
+      }
+
+      /* Popup Styles */
+      .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .popup-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .popup-content {
+        background-color: var(--dark-gray);
+        border-radius: 15px;
+        width: 90%;
+        max-width: 800px;
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 30px;
+        position: relative;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        border: 2px solid var(--pink);
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+      }
+
+      .popup-overlay.active .popup-content {
+        transform: scale(1);
+      }
+
+      .popup-close {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 1.5rem;
+        color: var(--white);
+        background: none;
+        border: none;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .popup-close:hover {
+        color: var(--pink);
+      }
+
+      .popup-header {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .popup-header h3 {
+        font-size: 2rem;
+        color: var(--pink);
+        margin-bottom: 10px;
+      }
+
+      .popup-body {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 30px;
+      }
+
+      .popup-image {
+        border-radius: 10px;
+        overflow: hidden;
+        height: 250px;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .popup-details h4 {
+        color: var(--pink);
+        margin: 20px 0 10px;
+        font-size: 1.3rem;
+      }
+
+      .popup-details p {
+        margin-bottom: 15px;
+        color: #ccc;
+      }
+
+      /* Responsividade */
+      @media (max-width: 768px) {
+        .header-content {
+          padding: 0 10px;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 70px;
+          left: -100%;
+          width: 100%;
+          height: calc(100vh - 70px);
+          background-color: var(--black);
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.5s ease;
+          z-index: 999;
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .nav-links li {
+          margin: 15px 0;
+        }
+
+        .menu-toggle {
+          display: flex;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(7px, -6px);
+        }
+
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .section-title h2 {
+          font-size: 1.8rem;
+        }
+
+        .section-title p {
+          font-size: 1rem;
+        }
+
+        .events-columns {
+          grid-template-columns: 1fr;
+        }
+
+        .whatsapp-box {
+          padding: 25px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .popup-body {
+          grid-template-columns: 1fr;
+        }
+
+        .popup-content {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <div class="logo-text">SANTO ROLÊ</div>
+          </div>
+
+          <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <ul class="nav-links" id="nav-links">
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#pricing">Ingressos</a></li>
+            <li><a href="#register">Contato</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <h1>SANTO ROLÊ</h1>
+        <p style="color: rgb(252, 252, 252)">
+          Um rolê diferente, com alegria, comunhão e a presença de Deus!
+        </p>
+        <a href="#register" class="btn">Garanta sua vaga</a>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Sobre o Santo Rolê</h2>
+          <p>
+            Eventos de entretenimento com propósito, onde a diversão e a fé se
+            encontram para criar experiências incríveis
+          </p>
+        </div>
+
+        <div class="events-columns">
+          <div class="event-column cine-column" data-event="cine">
+            <div class="event-image"></div>
+            <div class="event-content">
+              <h3>SANTO ROLÊ CINE</h3>
+              <p>
+                <b>
+                  Clique para ver detalhes sobre nossa experiência
+                  cinematográfica
+                </b>
+              </p>
+            </div>
+          </div>
+
+          <div class="event-column gamer-column" data-event="gamer">
+            <div class="event-image"></div>
+            <div class="event-content">
+              <h3>SANTO ROLÊ GAMES</h3>
+              <p><b>Clique para ver detalhes sobre nossa noite de jogos</b></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ingressos</h2>
+          <p>Valores para o Santo Rolê Games</p>
+        </div>
+
+        <!-- wrapper para alinhar os cards -->
+        <div class="pricing">
+          <!-- Card 1 -->
+          <div class="price-card">
+            <h3>Ingresso Individual</h3>
+            <div class="price">R$ 30 <span>/por pessoa</span></div>
+            <ul class="price-features">
+              <li>Acesso total a todos os jogos</li>
+              <li>Coffee break</li>
+              <li>Foto oficial do evento</li>
+              <li>Diversão garantida com propósito</li>
+            </ul>
+            <a href="#register" class="btn">Comprar</a>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="price-card">
+            <h3>Ingresso Familia</h3>
+            <div class="price">R$ 25<span>/por pessoa</span></div>
+            <ul class="price-features">
+              <li>Acesso total a todos os jogos</li>
+              <li>Coffee break</li>
+              <li>Foto oficial do evento</li>
+              <li>Desconto exclusivo Familia</li>
+              <li>Destaque Familia no Mural da igreja</li>
+            </ul>
+            <a href="#register" class="btn">Comprar</a>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="price-card">
+            <h3>Ingresso VIP</h3>
+            <div class="price">R$ 100 <span>/por pessoa</span></div>
+            <ul class="price-features">
+              <li>Acesso total a todos os jogos</li>
+              <li>Coffee break</li>
+              <li>Foto oficial</li>
+              <li>Destaque no Mural da igrejai></li>
+              <li>Brinde exclusivo</li>
+              <li>Desconto no proximo evento</li>
+              <li>Camisa personalizada Exclusiva</li>
+              <li></li>
+            </ul>
+            <a href="#register" class="btn">Comprar</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="register" id="register">
+      <div class="container">
+        <div class="section-title">
+          <h2>Como participar?</h2>
+          <p>
+            Entre em contato conosco para garantir sua vaga ou obter mais
+            informações
+          </p>
+        </div>
+
+        <div class="whatsapp-box">
+          <div class="whatsapp-icon">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <h3>Fale conosco pelo WhatsApp</h3>
+          <p>
+            Clique no botão abaixo para ser direcionado ao nosso WhatsApp e
+            receber todas as informações sobre o evento
+          </p>
+          <a id="whatsapp-button" href="#" class="btn btn-whatsapp">
+            Entrar em contato
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-info">
+            <div class="footer-logo">SANTO ROLÊ</div>
+            <p>
+              Eventos de entretenimento com alegria, comunhão e a presença de
+              Deus!
+            </p>
+          </div>
+
+          <div class="footer-links">
+            <h4>Eventos</h4>
+            <ul>
+              <li><a href="#" data-event="cine">Santo Rolê Cine</a></li>
+              <li><a href="#" data-event="gamer">Santo Rolê Games</a></li>
+              <li><a href="#">Próximos Eventos</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4>Contato</h4>
+            <ul>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://wa.me/559281752241?text=Olá,gostaria de maiores informações sobre o evento."
+                  ><i class="fab fa-whatsapp"></i> WhatsApp</a
+                >
+              </li>
+              <li>
+                <a
+                  target="_blank"
+                  href="https://www.instagram.com/ieadbam.tefe/"
+                  ><i class="fab fa-instagram"></i> Instagram</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fab fa-facebook"></i> Facebook</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>
+            &copy; 2025 Santo Rolê - IEADBAM - Uma Igreja de fé, amor e
+            transformação. Todos os direitos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Popup para Cine -->
+    <div class="popup-overlay" id="cine-popup">
+      <div class="popup-content">
+        <button class="popup-close">&times;</button>
+        <div class="popup-header">
+          <h3>SANTO ROLÊ CINE</h3>
+          <p>Seu cine perfeito - Movie Lover Since 2025</p>
+        </div>
+        <div class="popup-body">
+          <div
+            class="popup-image"
+            style="background-image: url('./Cinema1.png')"
+          ></div>
+          <div class="popup-details" style="text-align: justify">
+            <h4>Filmes Selecionados</h4>
+            <p>
+              Curadoria de filmes com valores cristãos que inspiram, entretêm e
+              edificam. Cada filme é cuidadosamente escolhido para proporcionar
+              entretenimento significativo.
+            </p>
+
+            <h4>Ambiente Aconchegante</h4>
+            <p>
+              Um ambiente acolhedor e confortável projetado para proporcionar a
+              melhor experiência cinematográfica.
+            </p>
+
+            <h4>Coffee Break Especial</h4>
+            <p>
+              Oferecemos um coffee break especial com pipoca, bebidas e snacks
+              para tornar a experiência ainda mais agradável e completa.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Popup para Gamer -->
+    <div class="popup-overlay" id="gamer-popup">
+      <div class="popup-content">
+        <button class="popup-close">&times;</button>
+        <div class="popup-header">
+          <h3>SANTO ROLÊ GAMES</h3>
+          <p>Noite de Jogos - Diversão que Edifica</p>
+        </div>
+        <div class="popup-body">
+          <div
+            class="popup-image"
+            style="background-image: url('./Just\ Game.png')"
+          ></div>
+          <div class="popup-details" style="text-align: justify">
+            <h4>Variedade de Jogos</h4>
+            <p>
+              Ampla seleção de jogos para todos os gostos, desde videogames
+              modernos até jogos de tabuleiro clássicos, garantindo diversão
+              para todas as idades.
+            </p>
+
+            <h4>Torneios Amistosos</h4>
+            <p>
+              Organizamos torneios amistosos com premiação, onde o importante
+              não é apenas competir, mas também construir relacionamentos e se
+              divertir.
+            </p>
+
+            <h4>Espaço para Integração</h4>
+            <p>
+              Um ambiente descontraído propício para conversas e integração
+              entre os participantes, promovendo a comunhão e o desenvolvimento
+              de novas amizades.
+            </p>
+
+            <h4>Lanches e Refrigerantes</h4>
+            <p>
+              Oferecemos lanches, refrigerantes e outras guloseimas para manter
+              a energia alta durante toda a noite de jogos e diversão.
+            </p>
+
+            <h4>Ambiente Saudável</h4>
+            <p>
+              Um espaço livre de qualquer conteúdo inadequado, onde todos podem
+              se divertir em um ambiente saudável e positivo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Menu mobile toggle
+      const menuToggle = document.getElementById("menu-toggle");
+      const navLinks = document.getElementById("nav-links");
+
+      menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("active");
+        navLinks.classList.toggle("active");
+      });
+
+      // Fechar menu ao clicar em um link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          menuToggle.classList.remove("active");
+          navLinks.classList.remove("active");
+        });
+      });
+
+      // WhatsApp integration
+      document
+        .getElementById("whatsapp-button")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          const phoneNumber = "559281752241"; // Substitua pelo número real
+          const message =
+            "Olá, gostaria de obter maiores informações sobre o evento Santo Rolê.";
+          const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+            message
+          )}`;
+          window.open(whatsappURL, "_blank");
+        });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Popup functionality
+      const eventColumns = document.querySelectorAll(".event-column");
+      const popupOverlays = document.querySelectorAll(".popup-overlay");
+      const closeButtons = document.querySelectorAll(".popup-close");
+
+      // Open popup when clicking on event column
+      eventColumns.forEach((column) => {
+        column.addEventListener("click", () => {
+          const eventType = column.getAttribute("data-event");
+          const popup = document.getElementById(`${eventType}-popup`);
+          popup.classList.add("active");
+          document.body.style.overflow = "hidden"; // Prevent scrolling when popup is open
+        });
+      });
+
+      // Open popup when clicking on event links in footer
+      document
+        .querySelectorAll(".footer-links a[data-event]")
+        .forEach((link) => {
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            const eventType = link.getAttribute("data-event");
+            const popup = document.getElementById(`${eventType}-popup`);
+            popup.classList.add("active");
+            document.body.style.overflow = "hidden";
+          });
+        });
+
+      // Close popup when clicking on close button
+      closeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const popup = button.closest(".popup-overlay");
+          popup.classList.remove("active");
+          document.body.style.overflow = "auto";
+        });
+      });
+
+      // Close popup when clicking outside the content
+      popupOverlays.forEach((overlay) => {
+        overlay.addEventListener("click", (e) => {
+          if (e.target === overlay) {
+            overlay.classList.remove("active");
+            document.body.style.overflow = "auto";
+          }
+        });
+      });
+
+      // Close popup with Escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          popupOverlays.forEach((overlay) => {
+            overlay.classList.remove("active");
+          });
+          document.body.style.overflow = "auto";
+        }
+      });
+    </script>
+  </body>
+</html>
